@@ -1,4 +1,4 @@
-import { ADD_TO_LIST, DELETE_FROM_TASK } from "./action";
+import { ADD_TO_LIST, DELETE_FROM_TASK, EDIT_TASK } from "./action";
 
 const initialState = {
   list: [],
@@ -12,6 +12,11 @@ export function Reducer(state = initialState, action) {
         list: [...state.list, action.value],
       };
     case DELETE_FROM_TASK:
+      return {
+        ...state,
+        list: action.arr,
+      };
+    case EDIT_TASK:
       return {
         ...state,
         list: action.arr,

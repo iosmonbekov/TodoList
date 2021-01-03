@@ -11,7 +11,9 @@ const App = () => {
   const dispatch = useDispatch();
 
   const add = (input) => {
-    dispatch(addToList(input));
+    if (input) {
+      dispatch(addToList(input));
+    }
   };
 
   return (
