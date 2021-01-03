@@ -8,6 +8,7 @@ import Form from "./Form";
 export default function Task(props) {
   const list = useSelector((state) => state.list);
   const [flag, setFlag] = useState(false);
+  const [check, setCheck] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -15,6 +16,9 @@ export default function Task(props) {
     const copy = [...list];
     copy.splice(index, 1);
     dispatch(deleteTask(copy));
+    if (check) {
+      setCheck(false);
+    }
   };
 
   const editTask = (input) => {
@@ -23,8 +27,6 @@ export default function Task(props) {
       copy.splice(props.id, 1, input);
       dispatch(editTaskToList(copy));
       setFlag(false);
-    } else {
-      setFlag(false);
     }
   };
 
@@ -32,7 +34,9 @@ export default function Task(props) {
     <Form flag={true} id={props.id} editTask={editTask} />
   ) : (
     <li className="list-group-item mb-2 task">
-      <div>{props.text}</div>
+      <div>
+        <span className="task_text">{props.text}</span>
+      </div>
       <div>
         <button
           className="btn btn-warning danger"

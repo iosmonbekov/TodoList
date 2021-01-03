@@ -26,3 +26,11 @@ img {
   top: 20px;
   z-index: 100;
 }
+
+.task_text {
+  margin-left: 10px;
+}
+.task_text_active {
+  margin-left: 10px;
+  text-decoration: line-through;
+}
